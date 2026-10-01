@@ -5,19 +5,15 @@ GO
 ALTER TABLE direcciones_csv
 ADD ubicacion GEOGRAPHY;
 
-
 -- 2. Poblar la columna con los valores existentes
 UPDATE direcciones_csv
 SET ubicacion = GEOGRAPHY::Point(latitud, longitud, 4326) WHERE latitud IS NOT NULL AND longitud IS NOT NULL;
 -- 4326 = SRID para WGS 84, el sistema de referencia usado por GPS
 
-
 -- Ver puntos en WKT (Well Known Text)
 SELECT
     latitud, longitud, ubicacion.ToString() AS ubicacion_wkt
 FROM geolocalizacion.dbo.direcciones_csv;
-
-
 
 USE geolocalizacion;
 GO

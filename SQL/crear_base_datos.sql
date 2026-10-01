@@ -87,7 +87,7 @@ GO
 ============================================================ */
 
 BULK INSERT dbo.salud
-FROM 'C:\data\datos_salud.csv'
+FROM 'C:\sitiosweb\geolocalizacion-sql-server\data\datos_salud.csv'
 WITH (
     FIRSTROW = 2,
     FIELDTERMINATOR = ';',
@@ -1441,8 +1441,7 @@ SELECT
     p.CostPrice,
     od.Quantity * p.CostPrice         AS CostAmount,
 
-    (od.Quantity * od.UnitPrice)
-      - (od.Quantity * p.CostPrice)   AS GrossMarginAmount,
+    (od.Quantity * od.UnitPrice) - (od.Quantity * p.CostPrice)   AS GrossMarginAmount,
 
     -- Flags útiles
     p.RequiresPrescription
